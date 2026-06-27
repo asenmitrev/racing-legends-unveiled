@@ -171,44 +171,48 @@ function HomePage() {
             The Complete Archive
           </h2>
           <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-            34 Champions / 1950 — 2024
+            75 Seasons / 1950 — 2024
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-border border border-border">
-          {champions.map((c) => (
-            <Link
-              key={c.slug}
-              to="/champions/$slug"
-              params={{ slug: c.slug }}
-              className="group relative bg-background hover:bg-surface transition-colors p-6 flex flex-col gap-6"
-            >
-              <div className="flex justify-between items-start">
-                <span className="font-display text-5xl text-foreground/15 group-hover:text-primary transition-colors">
-                  {String(c.titleYears[0]).slice(2)}
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-widest bg-secondary px-2 py-1">
-                  {c.countryCode}
-                </span>
-              </div>
-              <div className="space-y-2 mt-12">
-                <div className="font-display text-2xl uppercase italic leading-tight">
-                  {c.name}
+          {champions
+            .flatMap((c) => c.titleYears.map((year) => ({ year, champion: c })))
+            .sort((a, b) => a.year - b.year)
+            .map(({ year, champion: c }) => (
+              <Link
+                key={`${year}-${c.slug}`}
+                to="/champions/$slug"
+                params={{ slug: c.slug }}
+                className="group relative bg-background hover:bg-surface transition-colors p-6 flex flex-col gap-6"
+              >
+                <div className="flex justify-between items-start">
+                  <span className="font-display text-5xl text-foreground/15 group-hover:text-primary transition-colors">
+                    {year}
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-widest bg-secondary px-2 py-1">
+                    {c.countryCode}
+                  </span>
                 </div>
-                <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-                  {c.titles}× champion · {c.wins} wins
+                <div className="space-y-2 mt-12">
+                  <div className="font-display text-2xl uppercase italic leading-tight">
+                    {c.name}
+                  </div>
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+                    Title #{c.titleYears.indexOf(year) + 1} of {c.titles} · {c.teams.join(" / ")}
+                  </div>
                 </div>
-              </div>
-              <div className="pt-4 border-t border-border flex justify-between font-mono text-[10px] uppercase tracking-widest">
-                <span className="text-muted-foreground">
-                  {c.titleYears.join(" · ")}
-                </span>
-                <span className="text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                  →
-                </span>
-              </div>
-            </Link>
-          ))}
+                <div className="pt-4 border-t border-border flex justify-between font-mono text-[10px] uppercase tracking-widest">
+                  <span className="text-muted-foreground">
+                    {c.wins} career wins
+                  </span>
+                  <span className="text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    →
+                  </span>
+                </div>
+              </Link>
+            ))}
+
         </div>
       </section>
 
