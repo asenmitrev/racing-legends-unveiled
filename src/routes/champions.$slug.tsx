@@ -130,7 +130,7 @@ function ChampionPage() {
             {c.short}
           </p>
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed">
-            {c.bio.map((p, i) => (
+            {c.bio.map((p: string, i: number) => (
               <p key={i}>{p}</p>
             ))}
           </div>
