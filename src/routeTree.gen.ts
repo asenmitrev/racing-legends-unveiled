@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArchiveRouteImport } from './routes/archive'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChampionsSlugRouteImport } from './routes/champions.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArchiveRoute = ArchiveRouteImport.update({
   id: '/archive',
   path: '/archive',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/archive': typeof ArchiveRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/champions/$slug': typeof ChampionsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/archive': typeof ArchiveRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/champions/$slug': typeof ChampionsSlugRoute
 }
 export interface FileRoutesById {
@@ -52,25 +60,40 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/archive': typeof ArchiveRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/champions/$slug': typeof ChampionsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/archive' | '/champions/$slug'
+  fullPaths: '/' | '/about' | '/archive' | '/sitemap.xml' | '/champions/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/archive' | '/champions/$slug'
-  id: '__root__' | '/' | '/about' | '/archive' | '/champions/$slug'
+  to: '/' | '/about' | '/archive' | '/sitemap.xml' | '/champions/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/archive'
+    | '/sitemap.xml'
+    | '/champions/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ArchiveRoute: typeof ArchiveRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ChampionsSlugRoute: typeof ChampionsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/archive': {
       id: '/archive'
       path: '/archive'
@@ -106,6 +129,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ArchiveRoute: ArchiveRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ChampionsSlugRoute: ChampionsSlugRoute,
 }
 export const routeTree = rootRouteImport
