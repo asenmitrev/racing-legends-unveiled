@@ -77,13 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Apex Legends — F1 World Champions Archive" },
+      { title: "Masters of Puppets — F1 World Champions Archive" },
       {
         name: "description",
         content:
           "An editorial archive of every Formula 1 World Champion, from Giuseppe Farina in 1950 to Max Verstappen today.",
       },
-      { property: "og:title", content: "Apex Legends — F1 World Champions Archive" },
+      { property: "og:title", content: "Masters of Puppets — F1 World Champions Archive" },
       {
         property: "og:description",
         content:
@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Apex Legends — F1 World Champions Archive" },
+      { name: "twitter:title", content: "Masters of Puppets — F1 World Champions Archive" },
       { name: "description", content: "Formula 1 Legends showcases biographies of Formula 1 World Champions." },
       { property: "og:description", content: "Formula 1 Legends showcases biographies of Formula 1 World Champions." },
       { name: "twitter:description", content: "Formula 1 Legends showcases biographies of Formula 1 World Champions." },

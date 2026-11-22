@@ -13,7 +13,7 @@ export const Route = createFileRoute("/champions/$slug")({
     if (!c) {
       return {
         meta: [
-          { title: "Champion not found — Apex Legends" },
+          { title: "Champion not found — Masters of Puppets" },
           { name: "description", content: "This Formula 1 World Champion is not in the archive." },
         ],
       };

@@ -7,7 +7,7 @@ export function SiteNav() {
         to="/"
         className="font-display text-2xl tracking-tighter uppercase italic"
       >
-        Apex / Legends
+        Masters of Puppets
       </Link>
       <div className="flex gap-4 sm:gap-8 text-[10px] font-mono uppercase tracking-widest">
         <Link
@@ -41,7 +41,7 @@ export function SiteFooter() {
   return (
     <footer className="p-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
       <div className="font-display text-xl uppercase italic">
-        Apex Legends // 1950–2024
+        Masters of Puppets // 1950–2024
       </div>
       <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
         &copy; Apex Motors Archive // Built for the pursuit of speed

@@ -4,13 +4,13 @@ import { SiteFooter, SiteNav } from "@/components/site-chrome";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Apex Legends" },
+      { title: "About — Masters of Puppets" },
       {
         name: "description",
         content:
-          "Apex Legends is an editorial archive of every Formula 1 World Champion since 1950.",
+          "Masters of Puppets is an editorial archive of every Formula 1 World Champion since 1950.",
       },
-      { property: "og:title", content: "About — Apex Legends" },
+      { property: "og:title", content: "About — Masters of Puppets" },
       {
         property: "og:description",
         content:
@@ -38,7 +38,7 @@ function AboutPage() {
       <section className="px-6 py-20">
         <div className="max-w-2xl mx-auto space-y-6 text-lg text-foreground/85 leading-relaxed">
           <p>
-            Apex Legends is an editorial archive dedicated to the thirty-four
+            Masters of Puppets is an editorial archive dedicated to the thirty-four
             men who have won the Formula 1 World Drivers' Championship.
           </p>
           <p>

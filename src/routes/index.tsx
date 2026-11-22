@@ -7,13 +7,13 @@ import { SiteFooter, SiteNav } from "@/components/site-chrome";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Apex Legends — F1 World Champions Archive" },
+      { title: "Masters of Puppets — F1 World Champions Archive" },
       {
         name: "description",
         content:
           "An editorial archive of every Formula 1 World Champion, from 1950 to today. Biographies, statistics and stories of the drivers who defined the sport.",
       },
-      { property: "og:title", content: "Apex Legends — F1 World Champions Archive" },
+      { property: "og:title", content: "Masters of Puppets — F1 World Champions Archive" },
       {
         property: "og:description",
         content:
